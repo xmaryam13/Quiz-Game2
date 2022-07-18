@@ -148,13 +148,7 @@ class GUI:
                 print('An error has occured')
                 client.close()
                 break
-            
-    def layout(self,name):
-        self.name = name
-        self.window.deiconify()
-        self.window.title('CHATROOM')
-        self.window.resizable(width = False, height = False)
-        self.window.configure(width = 470, height = 550, bg = '#17202A')
+		
         
     def sendButton(self,msg):
         self.textCons.config(state=DISABLED)
