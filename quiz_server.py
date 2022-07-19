@@ -47,9 +47,9 @@ def clientthread(conn,nickname):
                         conn.send(f"Bravo! Your score is {score}\n\n".encode('utf-8'))
                     else:
                         conn.send('Incorrect answer! Better luck next time!\n\n'.encode('utf-8'))
-                        remove_question(index)
-                        index, question, answer = get_random_answer(conn)
-                        remove_nickname(nickname)
+                    remove_question(index)
+                    index, question, answer = get_random_answer(conn)
+                    remove_nickname(nickname)
             else:
                 remove(conn)
         except:
