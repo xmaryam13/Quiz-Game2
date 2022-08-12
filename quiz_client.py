@@ -4,7 +4,6 @@ from tkinter import *
 
 
 
-nickname = input("Enter your nickname: ")
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 ip_address = '127.0.0.1'
@@ -59,7 +58,7 @@ class GUI:
         self.go.place(relx = 0.4,
 					rely = 0.55)
         
-        self.Window.mainloop()
+        self.window.mainloop()
         
     def goAhead(self, name):
         self.login.destroy()
@@ -70,14 +69,14 @@ class GUI:
     def layout(self,name):
         
         self.name = name
-        self.Window.deiconify()
-        self.Window.title("CHATROOM")
-        self.Window.resizable(width = False,
+        self.window.deiconify()
+        self.window.title("CHATROOM")
+        self.window.resizable(width = False,
 							height = False)
-        self.Window.configure(width = 470,
+        self.window.configure(width = 470,
 							height = 550,
 							bg = "#17202A")
-        self.labelHead = Label(self.Window,
+        self.labelHead = Label(self.window,
 							bg = "#17202A",
 							fg = "#EAECEE",
 							text = self.name ,
@@ -85,7 +84,7 @@ class GUI:
 							pady = 5)
         
         self.labelHead.place(relwidth = 1)
-        self.line = Label(self.Window,
+        self.line = Label(self.window,
 						width = 450,
 						bg = "#ABB2B9")
         
@@ -93,7 +92,7 @@ class GUI:
 						rely = 0.07,
 						relheight = 0.012)
         
-        self.textCons = Text(self.Window,
+        self.textCons = Text(self.window,
 							width = 20,
 							height = 2,
 							bg = "#17202A",
@@ -106,7 +105,7 @@ class GUI:
 							relwidth = 1,
 							rely = 0.08)
         self.textCons.config(cursor='arrow')
-        self.labelBottom = Label(self.Window,bg = '#ABB2B9',height=80)
+        self.labelBottom = Label(self.window,bg = '#ABB2B9',height=80)
         self.labelBottom.place(relwidth=1,rely=0.825)
         
         self.entryMsg = Entry(self.labelBottom,bg='#2C3E50',fg='#EAECEE',font='Helvetica 13')
@@ -165,28 +164,6 @@ class GUI:
             self.show_message(message)
             break
         
-        
 
-def receive():
-    while True:
-        try:
-            message = client.recv(2048).decode('utf-8')
-            if message == 'NICKNAME':
-                client.send(nickname.encode('utf-8'))
-            else:
-                self.show_message(message)
-        except:
-            print("An error occured!")
-            client.close()
-            break
-
-def write():
-    while True:
-        message = '{}: {}'.format(nickname, input(''))
-        client.send(message.encode('utf-8'))
-
-receive_thread = Thread(target=receive)
-receive_thread.start()
-write_thread = Thread(target=write)
-write_thread.start()
+g = GUI()
 
