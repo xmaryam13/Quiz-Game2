@@ -65,6 +65,7 @@ class GUI:
         self.layout(name)
         rcv = Thread(target=self.receive)
         rcv.start()
+	self.layout(name)
 
    
   
@@ -82,7 +83,12 @@ class GUI:
                 print('An error has occured')
                 client.close()
                 break
-        
-
+    def layout(self,name):
+	self.name = name
+	self.Window.deiconify()
+	self.Window.title('CHAT ROOM')
+	self.Window.resizeable(width=False, height = False)
+	self.Window.configure(width = 470, height= 550, bg = '#17202A')
+	
 g = GUI()
 
