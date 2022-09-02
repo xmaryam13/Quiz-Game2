@@ -84,6 +84,14 @@ class GUI:
                 client.close()
                 break
     def layout(self,name):
+	self.labelHead = Label(self.Window,bg = "#17202A",fg = "#EAECEE",text = self.name , font = "Helvetica 13 bold",pady = 5) 
+	self.labelHead.place(relwidth = 1) 
+	self.line
+	self.textCons
+	self.labelBottom
+	self.entryMsg
+	self.buttonMsg
+	self.scrollbar
 	self.name = name
 	self.Window.deiconify()
 	self.Window.title('CHAT ROOM')
